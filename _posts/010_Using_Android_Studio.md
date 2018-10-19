@@ -1,3 +1,8 @@
+---
+layout: post
+title: Android Studio
+---
+
 # Using Android Studio
 
 This script discusses several feature and usage of Android Studio.

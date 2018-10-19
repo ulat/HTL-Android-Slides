@@ -1,4 +1,7 @@
-{% include generateDynamicMenu.html root="./" %}
+---
+layout: page
+title: Start
+---
 
 ## Welcome to Android Script
 
