@@ -1,6 +1,6 @@
 ---
-layout: page
-title: default
+layout: default
+title: Android Scripts
 ---
 
 ## Welcome to Android Script
