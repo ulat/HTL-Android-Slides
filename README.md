@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Start
+title: default
 ---
 
 ## Welcome to Android Script
