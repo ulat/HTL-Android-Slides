@@ -1,3 +1,8 @@
+---
+layout: post
+titel: Android Studio Einführung
+---
+
 ![Home](../README.md)
 
 # Using Android Studio
