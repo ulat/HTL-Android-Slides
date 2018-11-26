@@ -107,5 +107,3 @@ A dialog pops up which lets us choose the device we will run our app on.
 After starting the emulator you will see many log messages in the `Logcat` window of Android Studio. This is where you can see all the logs from the emulator. We will discuss this window in a later lesson in depth.
 
 ![](assets/010_Using_Android_Studio-83e98955.png)
-
-## Debugging in Android Studio  
