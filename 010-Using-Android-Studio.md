@@ -1,8 +1,3 @@
----
-layout: post
-title: Android Studio Einführung
----
-
 # Using Android Studio
 
 This script discusses several feature and usage of Android Studio.
