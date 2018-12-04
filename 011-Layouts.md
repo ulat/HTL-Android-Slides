@@ -74,7 +74,7 @@ Ein Zentrierung des Buttons erreicht man, durch Zuweisung von jeweils 8dpi Rand 
 
 ![](assets/011-Layouts-f7c8b00d.png)
 
-####Chains
+#### Chains
 Mithilfe von chains können mehrere View Komponenten miteinander gruppiert und gemeinsam ausgerichtet werden. Dazu müssen die Elemente aneinander ausgerichtet werden.
 
 ![](assets/011-Layouts-dcfadae4.png)
