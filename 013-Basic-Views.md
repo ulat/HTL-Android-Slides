@@ -54,6 +54,7 @@ swiA.setInCheckedChangeListener(( buttonView, isChecked ) --> {
     String s = buttonView.getText() + " --> " + isChecked;
     Log.d(TAG, "Switch: " + s);
 });
+```
 
 ## NumberPicker
 
@@ -66,7 +67,7 @@ Die wichtigsten Eigenschaften vom NumberPicker lauten:
  - **maxValue**: maximaler Wert, der gewählt werden kann
  - **minValue**: minimaler Wert, der gewählt werden kann
  - **value**: aktueller Wert
- - **Event _OnValueChange_**: wird bei einer Änderung des gewählten Werts aufgerufen.
+ - **Event _OnValueChange_ **: wird bei einer Änderung des gewählten Werts aufgerufen.
 
 _Beim NumberPicker muss stets die Eigenschaft **maxValue** gesetzt sein, sonst wird nur eine '0' angezeigt. Diesen Wert kann man aber nur programmatisch über den Java Code setzen und nicht im XML File definieren!_
 
