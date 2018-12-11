@@ -28,8 +28,8 @@ Eine RatingBar stellt dem User die Möglichkeit zur Bewertung zur Verfügung.
 ![](assets/013-Basic-Views-f616b017.png)
 
 Die wichtigsten Eigenschaften der RatingBar:
- - numStars: Anzahl der verfügbaren Sterne (7)
- - rating: Anzahl der _gefüllten_ / _gewählten_ Sterne (4)
+ - __numStars__: Anzahl der verfügbaren Sterne (7)
+ - __rating__: Anzahl der _gefüllten_ / _gewählten_ Sterne (4)
 
 Über Änderungen der Werte wird man durch einen Listener informiert:
 
