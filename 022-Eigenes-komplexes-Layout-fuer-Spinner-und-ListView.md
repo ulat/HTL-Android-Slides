@@ -113,3 +113,19 @@ Informationen zu ViewHolder Pattern und RecyclerView findet man zB:
 
 ## Eigenen Adapter von ArrayAdapter ableiten
 Neben der Verwendung von ```BaseAdapter``` als Basisklasse kann auch direkt von der Klasse ``ÀrrayAdapter``` abgeleitet werden und so ein eigener ArrayAdapter erstellt werden. Wenn als Datenquelle ein kompatibler ArrayTyp verwendet wird, ist diese Variante etwas schneller, als die Verwendung von BaseAdapter. Die Variante mit BaseAdapter lässt dem Entwickler jedoch mehr Freiraum, was zB die Wahl der Datenquelle betrifft. So könnte zB auch auf eine Datenbank zugegriffen werden.
+
+```java
+private class TwoRowArrayAdapter extends ArrayAdapter<Car> {
+
+    public TwoRowArrayAdapter(@NonNull Context context, int resource, @NonNull List<Car> objects) {
+        ...
+    }
+
+    @NonNull
+    @Override
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        ...
+    }
+}
+```
+Hier wird die Verwaltung der ArrayList (```getCount```, ```getPos```, etc.) direkt vom ArrayAdapter übernommen und muss nicht selbst implementiert werden. 

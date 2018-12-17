@@ -12,7 +12,7 @@ Die ListView findet sich im Desiger im Bereich "legacy". Einfach die View Kompon
        android:layout_height="match_parent" />
 ```
 
-![](assets/020-ListViews-RecyclerView-3915bf02.png)
+![](assets/020-ListViews-958bd096.png)
 
 Allerdings sind dadurch noch keine Elemente an die ListView gebunden. Die ListView benötigt eine Datenquelle, aus der die Element angezeigt werden. Diese Datenquelle wird mithilfe eines __Adapters__ an die ListView gebunden.
 
@@ -20,7 +20,7 @@ Allerdings sind dadurch noch keine Elemente an die ListView gebunden. Die ListVi
 Die einfachste Variante ist ein Adapter mit fixen Werten. Die Element werden zB in einer ArrayList gespeichert.
 
 #### Layout im Emulator
-![](assets/020-ListViews-RecyclerView-b3d97a4f.png)
+![](assets/020-ListViews-24efb3eb.png)
 
 #### Codebeispiel
 ```java
