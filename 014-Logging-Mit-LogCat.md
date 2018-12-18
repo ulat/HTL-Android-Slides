@@ -31,7 +31,7 @@ Der Entwickler kann die Aufgaben der Verwaltung der Logs direkt an das Framework
 
 In Android können wir mit statischen Methoden der Klasse ```Log``` Log-Meldungen erzeugen:
 
-| Methode | Bedeutung | |
+| Methode | Bedeutung |-- |
 | ------ | ------ | -------------|
 | Log.v | verbose | reine Information |
 | Log.d | debug | Information zur Fehlersuche / Debugging im Programm |
