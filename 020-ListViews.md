@@ -145,7 +145,7 @@ Wie kann man nun auf einen Klickevent des Benutzers reagieren. Dazu kann der ```
 mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
            @Override
            public void onItemClick(AdapterView<?> adapterView, View view, int pos, long id) {
-               Toast.makeText(getApplicationContext(), "Item Nr " + i + " klicked", Toast.LENGTH_LONG).show();
+               Toast.makeText(getApplicationContext(), "Item Nr " + pos + " klicked", Toast.LENGTH_LONG).show();
            }
        });
 ```
