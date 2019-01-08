@@ -160,8 +160,8 @@ Ein Toast ist in Android eine kurze Mitteilung, die dem User angezeigt wird. Der
 
 Daraus baut man einen Aufruf der statischen Methoden ```makeText``` und hängt mittels Method-chaining noch den Aufruf ```show()``` dran, um dass der Toast auch tatsächlich angezeigt wird.
 ```java
-Toast.makeText(context, message, lenght).show();
-
+Toast.makeText(context, message, length).show();
+```
 ### Eigenes Layout für die Zeilen verwenden
 Bislang haben wir immer ein vordefiniertes Layout für die Zeilen verwendet. Möchte man komplexere Layouts einsetzen, ist dies genauso möglich.
 
