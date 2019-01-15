@@ -100,9 +100,9 @@ private void fillItemsList(List list) {
 Dann kann der Adapter vom Typ ```TwoRowCarAdapter``` angelegt werden. Wir übergeben in diesem Fall wieder den Kontext, aber das eigene XML Layout und die cars-Liste.
 ```java
 mAdapter = new TwoRowCarAdapter(this, R.layout.my_row_layout, cars);
-       // Nachdem der Adapter angelegt wurde, muss er mit der ListView verbunden
-       // werden.
-       lv.setAdapter(mAdapter);
+// Nachdem der Adapter angelegt wurde, muss er mit der ListView verbunden
+// werden.
+lv.setAdapter(mAdapter);
 ```
 
 Für eine bessere Performance beim Erstellen der GUI wird empfohlen das View-Holder Pattern umzusetzen bzw. statt der ListView eine RecyclerView zu verwenden. Momentan bleiben wir der Einfachheit halber jedoch bei der Verwendung der ListView.
@@ -112,7 +112,7 @@ Informationen zu ViewHolder Pattern und RecyclerView findet man zB:
 - https://developer.android.com/training/improving-layouts/smooth-scrolling
 
 ## Eigenen Adapter von ArrayAdapter ableiten
-Neben der Verwendung von ```BaseAdapter``` als Basisklasse kann auch direkt von der Klasse ``ÀrrayAdapter``` abgeleitet werden und so ein eigener ArrayAdapter erstellt werden. Wenn als Datenquelle ein kompatibler ArrayTyp verwendet wird, ist diese Variante etwas schneller, als die Verwendung von BaseAdapter. Die Variante mit BaseAdapter lässt dem Entwickler jedoch mehr Freiraum, was zB die Wahl der Datenquelle betrifft. So könnte zB auch auf eine Datenbank zugegriffen werden.
+Neben der Verwendung von ```BaseAdapter``` als Basisklasse kann auch direkt von der Klasse ```ArrayAdapter``` abgeleitet werden und so ein eigener ArrayAdapter erstellt werden. Wenn als Datenquelle ein kompatibler ArrayTyp verwendet wird, ist diese Variante etwas schneller, als die Verwendung von BaseAdapter. Die Variante mit BaseAdapter lässt dem Entwickler jedoch mehr Freiraum, was zB die Wahl der Datenquelle betrifft. So könnte zB auch auf eine Datenbank zugegriffen werden.
 
 ```java
 private class TwoRowArrayAdapter extends ArrayAdapter<Car> {
