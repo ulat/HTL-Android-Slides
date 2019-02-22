@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="cities">
+        <item>Graz</item>
+        <item>Wien</item>
+        <item>Linz</item>
+    </string-array>
+    <string-array name="city_values">
+        <item>8010</item>
+        <item>1100</item>
+        <item>4020</item>
+    </string-array>
+</resources>
