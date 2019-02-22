@@ -15,8 +15,16 @@
         app:showAsAction="always" />
 
     <item
+        android:id="@+id/menu_newItem"
+        android:icon="@android:drawable/ic_menu_close_clear_cancel"
+        android:title="@string/new_item"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/menu_quit"
         android:icon="@android:drawable/ic_menu_close_clear_cancel"
         android:title="@string/quit"
         app:showAsAction="never" />
+
+
 </menu>

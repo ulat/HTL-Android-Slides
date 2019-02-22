@@ -136,3 +136,157 @@ case android.R.id.home:
    Toast.makeText(this, "Back on AB clicked!", Toast.LENGTH_LONG).show();
    break;
 ```
+
+## Kontextmenü
+Kontextmenüs erscheinen bei längeren Klick auf einen Eintrag. Sie eignen sich insbesondere für Operationen, die auf einzelne Elemente etwa einer Listview angewendet werden sollen.
+
+![](assets/041_Menues-597a9f46.png)
+
+Programmatisch ist ein Contextmenu genauso zu handhaben, wie die anderen Menus auch:
+ - Menü als XML Datei definieren
+ - `registerForContextMenu()`: hier ein Element für das Kontextmenü registrieren
+ - `onCreateContextMenu()`: Hier kann für jede registrierte View Komponente ein eigenes Menü erstellt werden.
+ - `onContextItemSelected()`: Hier kann auf die User-Eingabe im Menü reagiert werden.
+
+### XML Datei erstellen
+Das Menü wird als XML-Ressource definiert:
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/context_show"
+        android:title="@string/context_show" />
+    <item
+        android:id="@+id/context_delete"
+        android:title="@string/context_delete" />
+
+</menu>
+```
+
+### Contextmenu an View Komponente registrieren
+Möchte man ein Contextmenu verweden, muss jede View-Komponente, mit der ein derartiges Menu verbunden sein sollte, extra registriert werden:
+
+```java
+@Override
+public boolean onCreateOptionsMenu(Menu menu) {
+   getMenuInflater().inflate(R.menu.menu_main, menu);
+   configActionBar();
+   // register context menu to view component
+   TextView textView = findViewById(R.id.text_view);
+   registerForContextMenu(textView);
+   return super.onCreateOptionsMenu(menu);
+}
+```
+
+### Zuordnen vom Contextmenu zur View Komponente
+In der Methode `onCreateContextMenu()` wird das jeweilige XML-Menu der View Komponente zugeordnet:
+```java
+@Override
+public void onCreateContextMenu(ContextMenu menu, View v,
+                                ContextMenu.ContextMenuInfo menuInfo) {
+   int viewId = v.getId();
+   if (viewId == R.id.text_view) {
+       getMenuInflater().inflate(R.menu.context_menu, menu);
+   }
+   super.onCreateContextMenu(menu, v, menuInfo);
+}
+```
+### Reaktion auf die Menüauswahl
+Die Reaktion erfolgt wieder sehr ähnlich wie bei Optionsmenüs. Sie wird in der Methode `onContextItemSelected()` umgesetzt:
+```java
+@Override
+public boolean onContextItemSelected(MenuItem item) {
+    if (item.getItemId() == R.id.context_show) {
+        Toast.makeText(this, "Showing details!", Toast.LENGTH_LONG).show();
+        return true;
+    }
+    if (item.getItemId() == R.id.context_delete) {
+        Toast.makeText(this, "Deleting item", Toast.LENGTH_LONG).show();
+        return true;
+    }
+    return super.onContextItemSelected(item);
+}
+```
+### ContextMenu für Elemente einer Listview
+Möchte man ein Contextmenu den Elementen einer ListView zuordnen, ergibt sich folgendes Problem: Die einzige vorhandene ID ist jene von der ListView selbst. Für das Kontextmen braucht man aber die ID vom ausgewählten Listeneintrag.
+![](assets/041_Menues-0e821d27.png)
+Der  grundlegende Prozess läuft auch bei der ListView gleich ab.
+
+#### Menü registrieren
+```java
+ListView listView = findViewById(R.id.listview);
+registerForContextMenu(listView);
+```
+Die gesamte ListView Komponente wird für das ContextMenü registriert.
+
+#### Menü erstellen
+Auch hier wird das Menü zuerst als XML-Ressource angelegt. _In diesem Beispiel wird für die ListView das gleiche Kontextmenü wie für das Textfeld verwendet. Man könnte hier jedoch natürlich auch ein anderes XML-Menü erstellen!_
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/context_show"
+        android:title="@string/context_show" />
+    <item
+        android:id="@+id/context_delete"
+        android:title="@string/context_delete" />
+
+</menu>
+```
+#### Zuweisung vom Menü an die Komponente
+Auch hier kann ich ein Menü für mehrere Komponenten verwenden, oder unterschiedliche Menüs zuweisen.
+```java
+@Override
+public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+   int viewId = v.getId();
+   if (viewId == R.id.text_view || viewId == R.id.listview) {
+       getMenuInflater().inflate(R.menu.context_menu, menu);
+   }
+   super.onCreateContextMenu(menu, v, menuInfo);
+}
+```
+#### onContextItemSelected
+Der wesentliche Unterschied bei der Verwendung eines ContextMenüs in Verbindung mit einer ListView liegt in der Implementierung der Methode `onContextItemSelected`. Hier ist man ja nicht an der gesamten Liste, sondern nur an der ID den angeklickten Eintrags in der Liste interessiert. Diese Information bekommt man von der `MenuInfo`, die im Fall der Liste vom Typ `AdapterContextMenuInfo` ist und entsprechend gecastet werden muss. Diese Klasse hat dann Properties für **id** und **position**.
+```java
+@Override
+public boolean onContextItemSelected(MenuItem item) {
+    if (item.getItemId() == R.id.context_show) {
+        AdapterView.AdapterContextMenuInfo info =
+                (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        String name = "";
+        if (info != null) {
+            long id = info.id;
+            int pos = info.position;
+            name = info != null ?
+                    listView.getAdapter().getItem(pos).toString() :
+                    "";
+        }
+        Toast.makeText(this, "Showing details! "+name ,
+                Toast.LENGTH_LONG).show();
+        return true;
+    }
+    if (item.getItemId() == R.id.context_delete) {
+        Toast.makeText(this, "Deleting item", Toast.LENGTH_LONG).show();
+        return true;
+    }
+    return super.onContextItemSelected(item);
+}
+```
+## Popup Menu
+Es gibt noch eine dritte Variante, ein Menü zu öffnen, nämlich aufgrund eines beliebigen Events, z.B. eines Button-Klicks.
+Die zugehörige Klasse heißt PopupMenu.
+Das Menü wird wie in den beiden anderen Varianten erzeugt. Es erscheint dann unterhalb jener View, die im Konstruktor von PopupMenu angegeben wird.
+Popup Menüs sollten nicht für kontextbezogene Aktionen verwendet werden. Sie eignen sich dafür, wenn nach dem ersten Befehl noch weitere Auswahlmöglichkeiten bestehen. Z.B. kann der Button "New" mit einer Auswahl hinterlegt werden, welches neue Element angezeigt werden soll.
+![](assets/041_Menues-0cde5f58.png)
+```java
+public void showPopupMenu(View view) {
+    PopupMenu menu = new PopupMenu(this, view);
+    menu.inflate(R.menu.popup_menu);
+    menu.setOnMenuItemClickListener( (item) -> {
+        Toast.makeText(this, "Popup Menu id: " + item.getItemId(),
+                        Toast.LENGTH_LONG).show();
+        return true;
+    });
+    menu.show();
+}
+```
