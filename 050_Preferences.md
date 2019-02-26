@@ -301,7 +301,7 @@ private void assertPreferencesInFile() {
       int lastStoredVersion = prefs.getInt(versionKey, -1);
       if (lastStoredVersion == currentVersion) return;
       prefs.edit()
-              .putInt(versionKey, currentVersion)
+              .putLong(versionKey, currentVersion)
               .putString("username", prefs.getString("username", "Max"))
               .putString("city", prefs.getString("city", "1100"))
               .putBoolean("online", prefs.getBoolean("online", false))

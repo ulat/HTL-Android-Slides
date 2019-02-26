@@ -33,11 +33,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
         configActionBar();
         // register context menu to view component
         TextView textView = findViewById(R.id.text_view);
@@ -45,6 +40,11 @@ public class MainActivity extends AppCompatActivity {
         listView = findViewById(R.id.listview);
         registerForContextMenu(listView);
         createListAdapter(listView);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return super.onCreateOptionsMenu(menu);
     }
 

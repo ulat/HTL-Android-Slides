@@ -168,13 +168,16 @@ Möchte man ein Contextmenu verweden, muss jede View-Komponente, mit der ein der
 
 ```java
 @Override
-public boolean onCreateOptionsMenu(Menu menu) {
-   getMenuInflater().inflate(R.menu.menu_main, menu);
+protected void onCreate(Bundle savedInstanceState) {
+   super.onCreate(savedInstanceState);
+   setContentView(R.layout.activity_main);
    configActionBar();
    // register context menu to view component
    TextView textView = findViewById(R.id.text_view);
    registerForContextMenu(textView);
-   return super.onCreateOptionsMenu(menu);
+   listView = findViewById(R.id.listview);
+   registerForContextMenu(listView);
+   createListAdapter(listView);
 }
 ```
 
@@ -237,7 +240,8 @@ Auch hier wird das Menü zuerst als XML-Ressource angelegt. _In diesem Beispiel 
 Auch hier kann ich ein Menü für mehrere Komponenten verwenden, oder unterschiedliche Menüs zuweisen.
 ```java
 @Override
-public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+public void onCreateContextMenu(ContextMenu menu, View v,
+                                ContextMenu.ContextMenuInfo menuInfo) {
    int viewId = v.getId();
    if (viewId == R.id.text_view || viewId == R.id.listview) {
        getMenuInflater().inflate(R.menu.context_menu, menu);
