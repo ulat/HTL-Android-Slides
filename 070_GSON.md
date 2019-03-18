@@ -67,9 +67,9 @@ Etwaige Exceptions müssen natürlich gefangen werden.
 ## JSON Array nach Java
 Die Umwandlung eines JSON-Strings in eine Java-Array erfolgt ähnlich. Ausgangspunkt ist folgender String:
 ```java
-String sJson = "[id:1, name:\"Hansi\"},
-                 id:2, name:\"Mizi\"},
-                 id:3, name:\"Xaver\"}]";
+String sJson = "[{id:1, name:\"Hansi\"},
+                 {id:2, name:\"Mizi\"},
+                 {id:3, name:\"Xaver\"}]";
 Gson gson = new Gson();
 TypeToken<List<IdVal>> token = new TypeToken<List<IdVal>>(){};
 List<IdVal> result = gson.fromJson(sJson, token.getType());
