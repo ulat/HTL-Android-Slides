@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btn_start_without_thread"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Start without Thread"
+        android:onClick="startWithoutThread"/>
+    <Button
+        android:id="@+id/btn_start_simple_thread"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Start with simple Thread"
+        android:onClick="startSimpleThread"/>
+    <Button
+        android:id="@+id/btn_start_async_task"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Start with AsyncTask"
+        android:onClick="startAsyncTask"/>
+    <TextView
+        android:id="@+id/txt_msg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="100"
+        android:visibility="invisible" />
+
+</LinearLayout>
