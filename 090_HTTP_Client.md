@@ -16,6 +16,37 @@ Da wir nun auf das Internet zugreifen wollen, müssen wir zu allererst unserer A
 </manifest>
 ```
 
+## Änderungen ab Android API Level 28
+Seit Android 9 (API Level 28) ist der Zugriff auf nicht verschlüsselte Webseite standardmäßig nicht mehr erlaubt.
+
+Man erhält die Fehlermeldung:
+```
+com.android.okhttp.HttpHandler$CleartextURLFilter.checkURLPermitted(HttpHandler.java:115)
+```
+
+Um den Zugriff auf `http` ohne SSL-Verschlüsselung zu erlauben, muss man im Manifest einen entsprechenden Eintrag hinzufügen:
+
+`android:usesCleartextTraffic="true"`
+
+Das Manifest File sieht dann folgendermaßen aus:
+```xml
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="net.eaustria.bazar">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".MainActivity">
+            ...
+    </application>
+</manifest>
+
+```
+
 ## REST-Webservice Architektur
 Die Idee hinter REST _(Representational State Transfer)_ ist die Verwendung von Standard HTML-Requests:
 
