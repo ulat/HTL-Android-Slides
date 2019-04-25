@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_help"
+        android:icon="@android:drawable/ic_menu_help"
+        android:title="@string/help"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_preferences"
+        android:icon="@android:drawable/ic_menu_preferences"
+        android:tooltipText="@string/prefs"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/menu_newItem"
+        android:icon="@android:drawable/ic_menu_close_clear_cancel"
+        android:title="@string/new_item"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_quit"
+        android:icon="@android:drawable/ic_menu_close_clear_cancel"
+        android:title="@string/quit"
+        app:showAsAction="never" />
+
+
+</menu>

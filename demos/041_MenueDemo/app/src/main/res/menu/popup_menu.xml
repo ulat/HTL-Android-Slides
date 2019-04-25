@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/popup_first"
+        android:title="weitere Aktion" />
+    <item android:id="@+id/popup-second"
+        android:title="zweite Aktion" />
+</menu>

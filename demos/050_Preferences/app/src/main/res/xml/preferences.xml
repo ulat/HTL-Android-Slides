@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditTextPreference
+        android:defaultValue="Franz-Xaver"
+        android:key="username"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:summary="Einstellung des Benutzernamens"
+        android:title="Benutzername" />
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="online"
+        android:summary="Soll der Onlinemodus aktiviert werden?"
+        android:title="online" />
+    <ListPreference
+        android:defaultValue="1100"
+        android:entries="@array/cities"
+        android:entryValues="@array/city_values"
+        android:key="city"
+        android:summary="Heimatstadt des Benutzers"
+        android:title="Stadt" />
+</PreferenceScreen>

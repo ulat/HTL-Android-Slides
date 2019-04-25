@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Notifications</string>
+    <string name="channel_name">MyNotificationChannel</string>
+    <string name="channel_description">This is a very intuitive Notification Channel....</string>
+    <string name="snooze">Snooze</string>
+    <string name="reply_label">Anworten</string>
+    <string name="label">Notification_dircet_answer</string>
+    <string name="title">Notification_Direct_Reply</string>
+    <string name="content">Direct Reply to Notifications</string>
+</resources>

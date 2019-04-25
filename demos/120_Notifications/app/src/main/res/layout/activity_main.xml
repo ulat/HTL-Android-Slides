@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btn_show_notification"
+        android:text="Notification anzeigen"
+        android:onClick="showNotification"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btn_show_snooze_notification"
+        android:text="Notification mit Snooze Button anzeigen"
+        android:onClick="showSnoozeNotification"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btn_show_direct_reply_notification"
+        android:text="Notification mit Reply Button anzeigen"
+        android:onClick="showDirectReplyNotification"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btn_show_progressbar_notification"
+        android:text="Notification mit ProgressBar anzeigen"
+        android:onClick="showProgressBarNotification"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btn_show_group_notification"
+        android:text="Gruppierte Notifications anzeigen"
+        android:onClick="showGroupNotification"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

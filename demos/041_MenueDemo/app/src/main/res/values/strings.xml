@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="help">Hilfe</string>
+    <string name="prefs">Einstellungen</string>
+    <string name="quit">Beenden</string>
+    <string name="new_item">Neuer Eintrag</string>
+    <string name="context_show">Details anzeigen</string>
+    <string name="context_delete">Löschen</string>
+</resources>

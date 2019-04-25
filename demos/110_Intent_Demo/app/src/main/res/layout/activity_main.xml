@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!"/>
+    <Button
+        android:id="@+id/btn_start_activity"
+        android:text="Activity aufrufen"
+        android:onClick="startActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btn_show_map"
+        android:text="Open google maps"
+        android:onClick="openMap"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btn_start_unknown"
+        android:text="Start unknown intent"
+        android:onClick="openUnknownIntent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btn_phone_call"
+        android:text="Do Phonecall"
+        android:onClick="openPhoneCall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btn_phone_call2"
+        android:text="Do Phonecall with dialing"
+        android:onClick="openPhoneCallWithDialing"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btn_start_implicit"
+        android:text="Start implicit Intent"
+        android:onClick="openDetailImplicit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
