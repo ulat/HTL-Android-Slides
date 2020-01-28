@@ -20,7 +20,7 @@ Die Methode ```onCreate()``` erhält den Parameter ```savedInstanceState```. Die
 
 Methoden aus Komponenten, die auf Lifecycle Methoden reagieren (mit ```@OnLifecycleEvent``` gekennzeichnet sind) erhalten einen ```ON_CREATE``` event und können beliebigen Code ausführen, der für das Erreichen von on_create erforderlich ist.
 
-Nachdem die Methode ```onCreate()``` aufgerufen wurde, geht die Activity in den Status __Started___ und es wird wiederum die entsprechende hook-Methode aufgerufen.
+Nachdem die Methode ```onCreate()``` aufgerufen wurde, geht die Activity in den Status __Started__ und es wird wiederum die entsprechende hook-Methode aufgerufen.
 
 ### Codebeispiel
 
