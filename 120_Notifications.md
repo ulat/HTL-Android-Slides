@@ -183,7 +183,7 @@ PendingIntent helpPendingIntent = PendingIntent.getBroadcast(
 
 Dieser PendingIntent enthält eine Referenz auf einen MyBroadcastReceiver, der mit der Abarbeitung der Konversation betraut wird (in diesem Fall die Klasse `MyBroadcastReceiver`, die wir später noch betrachten werden).
 
-### RemoteInputer Builder
+### RemoteInput Builder
 
 Für die Texteingabe ist eine Instance der Klasse `RemoteInput.Builder` erforderlich, die der Notification hinzugefügt werden kann. Der Konstruktor verlangt einen `String`, welcher als Id für den eingegebenen Text dient. Um den eingegebenen Text zu erhalten, ist diese Id erforderlich.
 
