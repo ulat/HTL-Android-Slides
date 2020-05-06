@@ -33,22 +33,26 @@ Wenn der Typ im Lambda-Ausdruck aus dem Kontext abgeleitet werden kann, kann die
 Hat der Lambda-Ausdruck sein eigenes Argument, so kann dieses durch das Schlüsselwort `it` ersetzt werden: `list.any { it > 0}`. Das Schlüsselwort `it` kann immer dann verwendet werden, wenn der Lambda-Ausdruck nur ein Argument hat und keine andere Bezeichnung für dieses Argument generiert.
 
 Besteht der Lambda-Ausdruck aus mehreren Anweisungen, so können wir einfach mehere Zeilen innerhalb der Klammern des Lambda-Ausdrucks einfügen:
+
 ```Kotlin
 list.any {
     println("processing $it")
     it > 0
 }
 ```
+
 In der letzten Zeile des Lambda-Ausdruck steht der Rückgabewert des gesamten Lambdas.
 
 ## Destructuring Declarations mit Lambda-Ausdrücken
 Wenn der Lambda-Ausdruck ein Paar von Werten als Argument akzeptiert (z.B. ein _key-value-pair_ als Eintrag in eine `Map`), kann die sogenannte _destructuring syntax_ verwendet werden.
+
 ```kotlin
 map.mapValues { entry -> "${entry.key} -> ${entry.value}!"}
 ```
+
 Die gleiche Syntax haben wir bereits bei der Iteration über Schleifen gesehen. Anstatt nun jeweils auf `entry.key` und `entry.value` zu referenzieren, können wir die Variable aus zwei Variablen destrukturieren:
 
-```Kotlin
+```kotlin
 map.mapValues { key, value -> "$key -> $value!"}
 ```
 
@@ -66,10 +70,13 @@ data class Employee(
 
 employees.filter { it.city. == City.TIMBUKTU}.map { it.age }.average()
 ```
+
 ### Die `filter`-Funktion
 Die Erweiterungsfunktion `filter` filtert den Inhalt der Collection und behaltet nur jene Elemente, die den Filterkriterien genügen.
+
 ![Filter Erweiterungsfunktion in Kotlin](assets/410_Lambdas_in_Kotlin-a74331d9.png)
-Die Funktion `filter` liefert die gefilterten Element als Ergebnis zurück.
+
+Die Funktion `filter` liefert die gefilterten Elemente als Ergebnis zurück.
 
 ### Die `map`-Funktion
 Die `map`-Funktion transformiert jedes Element in der Collection (in dem sie eine bestimmte Operation auf jedes Element, das in der Collection enthalten ist, anwendet).
@@ -92,10 +99,14 @@ Die Funktionalität kann auch mithilfe der Funktion `first` bzw. `firstOrNull` r
 
 ### Die `count`-Funktion
 Die `count`-Funktion liefert die Anzahl der Elemente in der Collection, die dem jeweiligen Kriterium entsprechen.
+
 ![count-funktion in kotlin](assets/410_Lambdas_in_Kotlin-f4679ed4.png)
 
 ### Die `partition`-Funktion
-Mit der Funktion `partition` können Collections in zwei Collections aufgeteilt werden. Eine, die alle Elemente enthält, die dem Kriterium entsprechen und eine, die jene Elemente enthält, die dem Kriterium nicht entsprechen.
+Mit der Funktion `partition` können Collections in zwei Collections aufgeteilt werden.
+
+Eine, die alle Elemente enthält, die **dem Kriterium entsprechen** und eine, die jene Elemente enthält, die **dem Kriterium nicht entsprechen**.
+
 ![partition funktion in kotlin](assets/410_Lambdas_in_Kotlin-08d520cc.png)
 
 ### Die `groupBy`-Funktion
@@ -130,7 +141,7 @@ Die Bezeichung `zip` soll eine Analogie zu einem _Zipper_ (Reißverschluß) dars
 Haben die beiden Listen nicht die gleiche Anzahl an Elementen, so ist das Ergebnis von `zip` genauso lang wie die kürzere der beiden Listen.
 
 #### Variante der Funktion: `zipWithNext`
-Mithilfe von `zipWithNext` können jeweils benachbarte Elemente einer Liste zu den Elementen der neuen Liste zusammengefügt werden.
+Mithilfe von `zipWithNext` können jeweils benachbarte Elemente einer einzigen Liste zu den Elementen der neuen Liste zusammengefügt werden.
 
 ![zipwithnext funktion in kotlin](assets/410_Lambdas_in_Kotlin-3512fce6.png)
 
@@ -139,14 +150,17 @@ Mithilfe der `flatten`-Funktion kann eine Liste erstellt werden, die sämtliche 
 
 ![flatten funktioni kotlin](assets/410_Lambdas_in_Kotlin-d297daf0.png)
 
-#### Variaten die 'flatMap'-Funktion
-Die Methode `flatMap` verbindet die `map`-Funktion mit der `flatten`-Funktion. Zuerst werden mittels Lambda-Ausdruck die Elemente der Liste konvertiert (_map_) und daraus dann eine flache Liste geniert (_flatten_). Nach dem ersten Funktionsaufruf von `map` erhalten wir eine Liste von Listen. Meist bevorzugen wir jedoch eine flache Liste von Elementen.
+#### Eine Variante: die 'flatMap'-Funktion
+Die Methode `flatMap` verbindet die `map`-Funktion mit der `flatten`-Funktion.
+
+Zuerst werden mittels Lambda-Ausdruck die Elemente der Liste konvertiert (_map_) und daraus dann eine flache Liste generiert (_flatten_). Nach dem ersten Funktionsaufruf von `map` erhalten wir eine Liste von Listen. Meist bevorzugen wir jedoch eine flache Liste von Elementen.
 
 ![flatMap funktion in kotlin](assets/410_Lambdas_in_Kotlin-c6406fc0.png)
 
 ## Verständnisfragen
 
 Die folgenden Fragen vertiefen das Verständnis über die Anwendung der oben erklärten Funktionen. Wir verwenden folgende Basisklasse:
+
 ```kotlin
 data class Hero(
     val name: String,
@@ -207,32 +221,41 @@ val unknownHero = Hero("Unknown", 0, null)
 mapByName.getOrElse("unknown") { unknownHero }.age
 ```
     > Die Funktion `getOrElse(..)` liefert den entsprechenden Wert zu dem Property. Ist das Property nicht vorhanden, so verarbeitet die Funktion den Lambda-Ausdruck.  
-    Der Rückgabewert ist in diesem Fall daher: 0
+    > Der Rückgabewert ist in diesem Fall daher: 0
 
 ## Function Types in Kotlin
 In Kotlin können wir Lambda-Ausdrücke direkt in Variablen speichern. Diese Variable ist dann vom Type `function type`:
+
 ```kotlin
 val sum = { x: Int, y: Int -> x + y }
 // is the same as:
 val sum: (Int, Int) -> Int = { x, y -> x + y }
 ```
+
 In obigem Beispiel haben wir also einen Lambda Ausdruck, der zwei `Int`-Werte als Input akzeptiert und einen `Int` als Output zurückliefert.
 
-Dieses Beispiel akzeptiert einen `Int`-Wert und liefert einen `Boolean`-Wert zurück:
+Das untere Beispiel akzeptiert einen `Int`-Wert und liefert einen `Boolean`-Wert zurück:
+
 ```kotlin
 val isEven: (Int) -> Boolean = { i: Int -> i % 2 == 0 }
 ```
+
 Bei der Speicherung von Lambda-Ausdrücken in Variablen müssen wir zwischen dem Speichern eines Lambda-Ausdrucks und dem Speichern des Ergebnisses eines Lambda-Ausdrucks unterscheiden!
+
 ```kotlin
 val result: Boolean = isEven(42) // true
 ```
+
 Eine Variable, in der wir einen Lambda-Ausdruck gespeichert haben, können wir an jeder Stelle im Quellcode verwenden, an der wir auch einen Lambda-Ausdruck direkt verwenden können.
+
 ```kotlin
 val list = listOf(1, 2, 3, 4)
 list.any(isEven) // true
 list.filter(isEven) // [2, 4]
 ```
+
 Wenn wir runde Klammern direkt hinter einen Lambda-Ausdruck einfügen, können wir diesen auch direkt aufrufen:
+
 ```kotlin
 { println("hey!")}()
 // works the same way like
@@ -247,22 +270,24 @@ Auch bei Functions-Types können wir uns überlegen, wie Kotlin die Nullability 
 1. `val f3: (() -> Int)? = null`
 1. `val f4: (() -> Int)? = { null }`
 
-Worin liegt der Unterschied zwischen `() -> Int?` und `(() -> Int)?` ?
+Worin liegt der Unterschied zwischen `() -> Int?` und `(() -> Int)?`?
 
 Im ersten Beispiel ist der Rückgabetyp `nullable`. Im zweiten Beispiel ist der Function Type `nullable`.
 
-Was bedeutet `{ null }`? Dies ist ein Lambdaausdruck, der `null` zurückliefert.
+Was bedeutet `{ null }`? Dies ist ein Lambda-Ausdruck, der `null` zurückliefert.
 
 Dieser Ausdruck `val f3: (() -> Int)? = null` kann entweder einen Lambda-Ausdruck, der einen `Int`-Wert zurückliefert oder `null` speichern.
 
-Wie sieht nun also die Auflösung der Frage aus?
-> Im ersten Beispiel versuchen wir `null` einer Variable zuzuweisen, deren Typ `not-nullable` ist. Dies kann nicht kompiliert werden.
-> Im zweiten Beispiel speichern wir einen Lambda-Ausruck in der Variablen, der immer `null` zurückliefert. Dieser Auseruck kann kompiliert werden.
-> Das dritte Beispiel kompiliert problemlos, da hier die Varaible mit einem `nullable`-Function Type initialisiert wird. Diesem können wir problemlos `null` zuweisen.
+**Wie sieht nun also die Auflösung der Frage aus?**
+
+> Im ersten Beispiel versuchen wir `null` einer Variablen zuzuweisen, deren Typ `not-nullable` ist. Dies kann nicht kompiliert werden.
+> Im zweiten Beispiel speichern wir einen Lambda-Ausruck in der Variablen, der immer `null` zurückliefert. Dieser Ausdruck kann kompiliert werden.
+> Das dritte Beispiel kompiliert problemlos, da hier die Variable mit einem `nullable`-Function Type initialisiert wird. Diesem können wir problemlos `null` zuweisen.
 > Der vierte Ausdruck wiederum kann nicht kompiliert werden, da der Lambda-Ausdruck einen `Int`-Wert zurückliefern muss.
 
 
 Generell können wir `nullable`-Function Types nicht direkt aufrufen. Wir haben jedoch diese beiden Möglichkeiten:
+
 1. Wir können explizit auf `null` prüfen und mittels smart-cast die Variable aufrufen:
 ```kotlin
 if (f != null) {
@@ -275,23 +300,30 @@ f?.invoke()
 ```
 
 ## Referenzen auf Klassen-Member in Kotlin
-In Koltin können wir keine Funktionen in Variablen speichern, so wie das in voll-funktionalen Sprachen der Fall ist. Wir können jedoch Referenzen auf Funktionen in Variablen speichern:
+In Kotlin können wir keine Funktionen in Variablen speichern, so wie das in voll-funktionalen Sprachen der Fall ist. Wir können jedoch Referenzen auf Funktionen in Variablen speichern:
+
 ```kotlin
 fun isEven(i: Int): Boolean = i % 2 == 0
 
 val predicate ?= ::isEven
 ```
-Die Funktionsreferenz wird genauso wie in Java angelegt. Der Klassenname (kann entfallen wenn direkt in der Klasse angelegt) und danach die Bezeichnung der Funktion, getrennt von zwei Doppelpunkten `::`. Dies ist jedoch nur ein anderer Weg, einen Lambda-Ausdruck aufzurufen. Wir könnten statt der Funktionsreferenz auf direkt einen Lambda-Ausdruck in der Variablen speichern:
+
+Die Funktionsreferenz wird genauso wie in Java angelegt. Der Klassenname (kann entfallen wenn direkt in der Klasse angelegt) und danach die Bezeichnung der Funktion, getrennt von zwei Doppelpunkten `::`. Dies ist jedoch nur ein anderer Weg, einen Lambda-Ausdruck aufzurufen. Wir könnten statt der Funktionsreferenz auch direkt einen Lambda-Ausdruck in der Variablen speichern:
+
 ```kotlin
 val predicate = { i: Int -> isEven(i) }
 ```
+
 Ein Vorteil der Verwendung der Funktionsreferenz ist, dass wir alle Parameter der Funktion verstecken können. Vergleiche die beiden identen Code-Beispiele:
+
 ```kotlin
 val action = { person: Person, message: String -> sendEmail(person, message) }
 
 val action = ::sendEmail
 ```
+
 Die erforderlichen Parameter werden direkt vom Compiler abgeleitet. Wir können somit die Funktionreferenzen dazu nutzen, komplexe Lambda-Ausdrücke in einzelne Funktionsaufrufe zu unterteilen:
+
 ```kotlin
 fun isEven(i: Int): Boolean = i % 2 == 0
 
@@ -301,7 +333,8 @@ list.filter(::isEven)   // [2, 4]
 ```
 
 ### `Bound` vs. `Non-Bound` Referenzen
-In folgendem Beipsiel verwenden wir eine klassische `non-bound`-Referenz (`Person::isOlder`), die die zugehörige Klasse referenziert. Wir müssen daher jedesmal bei Aufruf dieser Funktionsreferenz explizit ein Objekt vom Typ `Person` im Zuge des Aufrufs mitübergeben.
+In folgendem Beispiel verwenden wir eine klassische `non-bound`-Referenz (`Person::isOlder`), die die zugehörige Klasse referenziert. Wir müssen daher jedesmal bei Aufruf dieser Funktionsreferenz explizit ein Objekt vom Typ `Person` im Zuge des Aufrufs mitübergeben.
+
 ```kotlin
  class Person(val name: String, val age: Int) {
     fun isOlder(ageLimit: Int) = age > ageLimit
@@ -312,12 +345,16 @@ val agePredicate = Person::isOlder
 val alice = Person("Alice", 29)
 agePredicate(alice, 21)     // true
 ```
+
 Betrachten wir nun die interne Umsetzung: Aus unserer Funktionsreferenz wird ein Lambda-Auseruck generiert, der zwei Parameter akzeptiert (`person` und `ageLimit`):
+
 ```kotlin
 val agePredicate = (Person, Int) -> Boolean = {
     person, ageLimit -> person.isOlder(ageLimit) }
 ```
+
 Diese Funktionsreferenz ist nicht an eine bestimmte Referenz gebunden und wird daher als `non-bound` bezeichnet. Eine gebundenen (oder `bound`) Referenz hingegen ist an eine bestimmte Instanz der Klasse gebunden:
+
 ```kotlin
  class Person(val name: String, val age: Int) {
     fun isOlder(ageLimit: Int) = age > ageLimit
@@ -328,13 +365,17 @@ val agePredicate = alice::isOlder
 
 agePredicate(alice, 21)     // true
 ```
+
 In obigem Beispiel haben wir im Lambda-Ausdruck kein Objekt vom Typ `Person` mehr, da dieses Objekt direkt mit der Funktionsreferenz gesetzt wurde.
+
 ```kotlin
 val agePredicate = (Int) -> Boolean = {
     ageLimit -> alice.isOlder(ageLimit)
 }
 ```
+
 Member-Funktionsreferenzen können mittels `this` direkt an die jeweilige Instanz gebunden werden:
+
 ```kotlin
 class Person(val name: String, val age: Int) {
     fun isOlder(ageLimit: Int) = age > ageLimit

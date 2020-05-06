@@ -9,11 +9,14 @@ In Kotlin gibt es keinen ternären Operator, wie in Java.
 ```java
 (a > b) ? a : b
 ```
-Für diese Zwecke kann einfach eine ```if ... else ...``` Verzweigung verwendet werden:
+Für diese Zwecke können wir einfach eine ```if ... else ...``` Verzweigung verwenden:
+
 ```kotlin
 val max = if (a > b) a else b
 ```
-Das Schlüsselwort ```when``` kann entsprechend einer ```switch```-Anweisung aus Java verwendet werden:
+
+Das Schlüsselwort ```when``` können wir entsprechend einer ```switch```-Anweisung aus Java verwenden:
+
 ```kotlin
 enum class Color {
     BLUE, ORANGE, RED
@@ -25,9 +28,13 @@ fun getDescription(color: Color): String =
         RED -> "hot"
     }
 ```
-Vergleich von Java ```switch``` und ```when``` in Kotlin:
+
+**Vergleich von Java ```switch``` und ```when``` in Kotlin:**
+
 ![](assets/350_Kontrollstrukturen_in_Kotlin-0cad634c.png)
-Um die enmus in diesem Beispiel direkt verwenden zu können, müssen diese importiert werden:
+
+Um die enmus in diesem Beispiel direkt verwenden zu können, müssen wir diese importieren:
+
 ```kotlin
 package mypackage
 import mypackage.Color.*
@@ -35,9 +42,11 @@ enum class Color {
     BLUE, ORANGE, RED
 }
 fun .....
-....
+    ....
 ```
-Um mehrere Werte für einen "Case" zu verwenden, können diese mit Komma getrennt angeführt werden:
+
+Um mehrere Werte für einen "Case" zu verwenden, können wir diese mit Komma getrennt anführen:
+
 ```kotlin
 fun respondToInput(input: String) = when (input) {
     "y", "yes" -> "I'm glad you agree!"
@@ -45,7 +54,9 @@ fun respondToInput(input: String) = when (input) {
     else -> "I do not understand your arguments!"
 }
 ```
-Als Bedingungen für einen Zweig können beliebige Statements - nicht nur Konstante - verwendet werden.
+
+Als Bedingungen für einen Zweig können wir beliebige Statements - nicht nur Konstante - verwenden:
+
 ```Kotlin
 fun mix(c1: Color, c2: Color) =
     when (setOf<Color>(c1, c2)) {
@@ -55,8 +66,11 @@ fun mix(c1: Color, c2: Color) =
         else -> throw Exception("Dirty Color")
     }
 ```
+
 Mit ```when``` kann auch der Subtyp eines Objekts überprüft werden:
+
 ![](assets/350_Kontrollstrukturen_in_Kotlin-bf3e668c.png)
+
 ```kotlin
 // In Kotlin
 when (pet) {
@@ -64,8 +78,11 @@ when (pet) {
     is Dog -> pet.woof()
 }
 ```
-Mit dem Schlüsselwort ```is``` kann auf den Typ eines Objekts überprüft werden. Im Unterschied zu Java ist kein expliziter Cast auf den Subtyp erfordlich, da dieser Cast durch Kotlin _smart-cast_ automatisch durchgeführt wird.
+
+Mit dem Schlüsselwort ```is``` können wir auf den Typ eines Objekts überprüfen. Im Unterschied zu Java ist kein expliziter Cast auf den Subtyp erfordlich, da dieser Cast durch Kotlin _smart-cast_ automatisch durchgeführt wird.
+
 Zum Vergleich, der erforderliche Code in Java:
+
 ```java
 // In Java:
 if (pet instanceof Cat) {
@@ -74,11 +91,14 @@ if (pet instanceof Cat) {
     ((Dog) pet).woof()
 }
 ```
-Seit der Version 1.3 kann innerhalb eines _when_-Konstrukts auch direkt eine neue Variable deklariert werden:
+
+Seit der Version 1.3 können wir innerhalb eines _when_-Konstrukts auch direkt eine neue Variable deklarieren:
+
 ```kotlin
 when (val pet = getMyFavouritePet()) {
     is Cat -> pet.meow()
     is Dog -> pet.woof()
 }
 ```
-Das ```when```-Konstrukt ist vor allem eine starke Vereinfachung für Mehrfachverzweigungen. Natürlich kann ```when``` auf für eine einfache Verzweigung verwendet werden. Hier eignet sich jedoch das _Standard_ "if - else" genauso gut.
+
+Das ```when```-Konstrukt ist vor allem eine starke Vereinfachung für Mehrfachverzweigungen. Natürlich kann ```when``` auch für eine einfache Verzweigung verwendet werden. Hier eignet sich jedoch das _Standard_ "if - else" genauso gut.

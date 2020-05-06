@@ -2,7 +2,7 @@
 
 Kotlin ist zu Java voll kompatibel. D.h. man kann (theoretisch) auch in einem einzigen Projekt Java und Kotlin-Source-Code mischen.
 
-![Java Code aus Kotlin aufrufen](assets/310_Von_Java_zu_Kotlin-705df239.png){:width="300"}
+![Java Code aus Kotlin aufrufen](assets/310_Von_Java_zu_Kotlin-705df239.png)
 
 Da Java, wie auch Kotlin/JVM auf der JVM laufen, kann man Java Code direkt aus Kotlin aufrufen und auch umgekehrt Kotlin Code aus Java Programmen heraus aufrufen. So können betehende Java Projekte sukzessive nach Kotlin migriert werden.
 
@@ -71,7 +71,8 @@ In Kotlin gibt es kein Schlüsselwort ```new```. Ein Objekt wird einfach durch e
 
 **Ein weiteres Beispiel**
 
-Nun betrachten wir ein anderes Beispiel. Erstellen wir folgende einfache Methode in Java. Die recht einfache Methode ```updateWeather``` weißt zwei verschiedenen Variablen unterschiedliche Werte, abhängig von der Temperatur zu - wobei ```color``` ein Wert aus einem ```enum``` darstellt.
+Nun betrachten wir ein anderes Beispiel. Erstellen wir folgende einfache Methode in Java. Die recht einfache Methode ```updateWeather``` weist zwei verschiedenen Variablen unterschiedliche Werte, abhängig von der Temperatur zu - wobei ```color``` ein Wert aus einem ```enum``` darstellt.
+
 ```java
 enum Color { BLUE, ORANGE, RED }
 
@@ -90,7 +91,9 @@ public void updateWeather(int degrees) {
     }   
 }
 ```
-Was macht der automatische Konverter daraus?
+
+**Was macht der automatische Konverter daraus?**
+
 ```kotlin
 internal enum class Color {
      BLUE, ORANGE, RED
@@ -111,11 +114,12 @@ internal enum class Color {
      }
  }
  ```
-Der Code sieht in Kotlin sehr ähnlich aus. Einige Syntax-Unterschiede sind zu erkennen (```fun``` für die Deklaration einer Funktion, etc.) Doch im Wesentlichen sehen die beiden Code-Snippets recht ähnlich aus.
+Der Code sieht in Kotlin sehr ähnlich aus. Einige Syntax-Unterschiede sind jedoch bereits zu erkennen (```fun``` für die Deklaration einer Funktion, etc.) Im Wesentlichen sehen die beiden Code-Snippets recht ähnlich aus.
 
-Tatsächlich ist das aber nicht die einfachste Schreibweise für diesen Code, die Kotlin erlaubt.
+**Tatsächlich ist das aber nicht die einfachste Schreibweise für diesen Code, die Kotlin erlaubt.**
 
 Wir können die drei Variablendeklarationen zu einer einzige zusammenfassen:
+
 ```kotlin
 fun updateWeather(degrees: Int) {
     val (description: String, color: Color) =
@@ -129,6 +133,7 @@ fun updateWeather(degrees: Int) {
 }
 ```
 _In Java müssen wir bei der Variablendeklaration stets den Typ angeben. Kotlin ist zwar - genauso wie Java - typsicher, bei der Deklaration kann jedoch auf die Angabe des Typs verzichtet werden, wenn dieser aus dem Kontext abgeleitet werden kann._
+
 ```kotlin
 fun updateWeather(degrees: Int) {
     val (description, color) =
@@ -141,7 +146,9 @@ fun updateWeather(degrees: Int) {
     }
 }
 ```
-Nun können wir noch die Zuweisung durch die Verwendung des Schlüsselworts ```when``` deutlich vereinfachen:
+
+**Nun können wir noch die Zuweisung durch die Verwendung des Schlüsselworts ```when``` deutlich vereinfachen:**
+
 ```kotlin
 fun updateWeather(degrees: Int) {
     val (description, color) = when {
@@ -151,9 +158,11 @@ fun updateWeather(degrees: Int) {
     }
 }
 ```
-Das ```when```Statement in Kotlin ist vergleichbar mit dem ```switch``` in Java. Es eignet sich besonders dann, wenn wir mehrere ```if-else``` Statements verwenden müssten.
 
-Nun können wir auch noch das ```Pair``` eliminieren.
+__Das ```when```Statement in Kotlin ist vergleichbar mit dem ```switch``` in Java. Es eignet sich besonders dann, wenn wir mehrere ```if-else``` Statements verwenden müssten.__
+
+**Nun können wir auch noch das ```Pair``` eliminieren.**
+
 ```kotlin
 fun updateWeather(degrees: Int) {
         val (description, color) = when {
@@ -163,7 +172,9 @@ fun updateWeather(degrees: Int) {
         }
     }
 ```
-Dieses Beispiel zeigt, dass der Kotlin-Konverter zwar ein praktischen Tool ist, jedoch nicht immer den _besten_ Kotlin Code erzeugt. Hier nochmal die Gegenüberstellung der Implementierungen in Java und Kotlin.
+Dieses Beispiel zeigt, dass der Kotlin-Konverter zwar ein praktisches Tool ist, jedoch nicht immer den _besten_ bzw. _elegantesten_ Kotlin Code erzeugt.
+
+Hier nochmal die Gegenüberstellung der Implementierungen in Java und Kotlin.
 
 __Java__
 
@@ -190,6 +201,7 @@ public void updateWeather(int degrees) {
     }
 ```
 __Kotlin__
+
 ```kotlin
 fun updateWeather(degrees: Int) {
         val (description, color) = when {

@@ -3,6 +3,7 @@ Abschließend wollen wir noch ein paar _Spezialitäten_ hinsichtlich der Untersc
 
 ## Primitive vs. Referenzdatentypen
 In Kotlin wird nicht explizit zwischen primitiven und Referenzdatentypen unterschieden. Betrachten wir das Beispiel `Int`: Hier können wir unterscheiden, ob wir den Integer-Datentyp als `Int` oder `nullable Int` deklarieren wollen:
+
 ```Kotlin
 fun foo(): Int = 1
 fun bar(): Int? = 1
@@ -32,6 +33,7 @@ public static final Integer bar() {
     return Integer.valueOf(1);
 }
 ```
+
 Wir sehen also, dass in Java der `nullable Int` mittels `Integer`-Wrapper Klasse und der Annotation `@Nullable` implementiert wurde.
 
 Der Standard-`Int` Typ in Kotlin entspricht einem primitiven `int`-Typ in Java.
@@ -44,9 +46,11 @@ Der `String` Datentyp in Kotlin entspricht weitestgehend dem `String` Datentyp a
 ```java
 "one.two.".replaceAll(".", "*")  // ********
 ```
+
 Anstatt nur die beiden `.`-Zeichen zu ersetzen, erhalten wir in Java einen String aus `*` zurück, da in Java `"."` in diesem Fall als `Regular Expression` und nicht als `String` interpretiert wird.
 
 In Kotlin gibt es für diesen Zweck zwei verschiedene Funktionen:
+
 ```kotlin
 "one.two.".replace(".", "*")           // one*two*
 "one.two.".replace(".".toRegex(), "*") // ********
@@ -71,6 +75,7 @@ fun f() { ... }
 // is the same as
 fun f(): Unit { ... }
 ```
+
 Im Bytecode wird `Unit` dann immer durch `void` ersetzt. `Unit` wird in Kotlin immer als Rückgabetyp von Funktionen verwendet, die keinen Rückgabewert haben.
 
-Wenn wir in Kotlin z.B. an verschiedenen Stellen individuelle Exceptions werfen wollen, so können wir das Werfen der Exception in eine eigene Funktion kapseln. Diese Funktion hat dann `Nothing` als Rückgabetyp. In diesem Fall signalisiert `Nothing`, dass der Funktionsaufruf nur durch Werfen einer Exception vollendet werden kann. Der Kotlin-Compiler kann diese Information dann für Typ-Ableitungen und das Auffinden von _Dead Code_ nutzen.
+Wenn wir in Kotlin z.B. an verschiedenen Stellen individuelle Exceptions werfen wollen, so können wir das Werfen der Exceptions in eine eigene Funktion kapseln. Diese Funktion hat dann `Nothing` als Rückgabetyp. In diesem Fall signalisiert `Nothing`, dass der Funktionsaufruf nur durch Werfen einer Exception vollendet werden kann. Der Kotlin-Compiler kann diese Information dann für Typ-Ableitungen und das Auffinden von _Dead Code_ nutzen.

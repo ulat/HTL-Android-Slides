@@ -1,7 +1,8 @@
 # Properties in Kotlin
-In Kotlin werden Properties, die in Java über das Java-Beans Konzept realisiert werden, als eigenes Sprach-Features realisiert.
+In Kotlin werden Properties, die in Java z.B. über das Java-Beans Konzept realisiert werden, als eigenes Sprach-Features realisiert.
 
 Betrachten wir zunächst eine Java-Klasse:
+
 ```Java
 public class JavaClass {
     private int foo = 0;
@@ -13,9 +14,11 @@ public class JavaClass {
     }
 }
 ```
-In Java gibt es keine direkten Properties. Definieren wir jedoch zu einem Feld die entsprechenden `get` und `set` Methoden, so können wir dieses Feld als Property betrachten.
+
+In Java gibt es keine direkten Properties in Klassen. Definieren wir jedoch zu einem Feld die entsprechenden `get` und `set` Methoden, so können wir dieses Feld als Property betrachten.
 
 In Kotlin können wir Properties direkt innerhalb einer Klasse anlegen:
+
 ```Kotlin
 class KotlinClass {
     var foo = 0
@@ -27,7 +30,7 @@ class KotlinClass {
 > val = field + getter
 > var = filed + getter + setter
 
-Allerdings verwenden wir in Kotlin die Properties direkt und nicht die getter-/setter-Methoden.
+Allerdings verwenden wir in Kotlin die Properties direkt und nicht mittels getter-/setter-Methoden.
 
 ```Kotlin
 class Contact (
@@ -38,7 +41,7 @@ class Contact (
 println(contact.address)
 contact.adress = "...."
 ```
-> Intern werden jedoch die entsprechenden getter-/setter-Methoden verwendet.
+> Intern werden jedoch die entsprechenden getter-/setter-Methoden aufgerufen.
 
 Verwenden wir diese Kotlin Klasse jedoch in Java, so müssen wir mittels der entsprechenden Methoden auf die Properties zugreifen.
 
@@ -77,7 +80,8 @@ class StateLogger {
         }
 }
 ```
-In obigem Codebeispiel greifen wir innerhalb der Accessor-Methode nicht auf das interne Feld zu. Für das Property `state` erstellt der Compiler kein eigenes Feld, wir nur an das Property `boolState` delegieren.
+
+In obigem Codebeispiel greifen wir innerhalb der Accessor-Methode nicht auf das interne Feld zu. Für das Property `state` erstellt der Compiler kein eigenes Feld, da wir nur an das Property `boolState` delegieren.
 
 
 ## Properties ohne Felder
@@ -141,6 +145,7 @@ fun analyzeUserSession(session: Session) {
     }
 }
 ```
+
 Hier liefert der Compiler einen Fehler: `session.user.accountId`, da kein _smart-cast_ verwendet werden kann. Das Property `session.user` hat eine offene Zugriffsmethode. Diese könnte bei jedem Zugriff einen anderen Wert zurückliefern, weshalb ein _smart-cast_ in diesem Fall nicht sicher ist.
 
 Wir können dieses Code-Snippet jedoch so umbauen, dass wir mithilfe einer lokalen Variable den _smart-cast_ aus Kotlin nutzen können:
@@ -169,10 +174,11 @@ val String.lastIndex: Int
 val String.indices: IntRange
     get() = 0..lastIndex
 ```
-Erweiterungs Properties sind um Grund gleich wie Erweiterungsfunktionen. Sie unterscheiden sich nur in der anderen Syntax.
+
+Erweiterungs-Properties sind im Grunde gleich wie Erweiterungsfunktionen. Sie unterscheiden sich nur in der anderen Syntax.
 
 ### Mutable Extension Properties
-Wir können auch `mutable`-Erweiterung-Properties in Kotlin erstellen, welches wir im weiteren Verlauf wie ein gewöhnliches Property verwenden können.
+Wir können auch `mutable`-Erweiterungs-Properties in Kotlin erstellen, welche wir im weiteren Verlauf wie ein gewöhnliches Property verwenden können.
 
 ```kotlin
 var StringBuilder.lastChar: Char
@@ -189,6 +195,7 @@ println(sb)
 
 ## Lazy bzw. Late Properties
 Bei _lazy_ Properties werden deren Werte erst beim ersten Zugriff auf das Property berechnet. Es ist daher also _lazy_ in dem Sinn, dass das Property keinerlei Interaktion auslöst, solange der Wert nicht erforderlich ist. In Kotlin fügen wir einfach `by lazy` an die Definition des Property an, um ein Property mit der _lazy_ Eigenschaft zu erzeugen.
+
 ```kotlin
 val lazyValue: String by lazy {
     println("computed")
@@ -222,7 +229,8 @@ class KotlinActivity: Activity() {
     }
 }
 ```
-In obigem Beispiel aus Android wollen wir das Property nicht im Konstruktor, sondern in einer eigenen Methode initialisieren. Natürlich können wir das Property in diesem Fall nicht als `not-nullable` definieren, da wir keinen initialen Wert haben. Wir können als Initialwertnur `null` wählen. Dies bedeutet jedoch, dass wir bei jedem Zugriff auf das Property mit der Thematik von `null`-Werten konfrontiert sind: `myData?.foo`.
+
+In obigem Beispiel aus Android wollen wir das Property nicht im Konstruktor, sondern in einer eigenen Methode initialisieren. Natürlich können wir das Property in diesem Fall nicht als `not-nullable` definieren, da wir keinen initialen Wert haben. Wir können als Initialwert nur `null` wählen. Dies bedeutet jedoch, dass wir bei jedem Zugriff auf das Property mit der Thematik von `null`-Werten konfrontiert sind: `myData?.foo`.
 
 Da wir jedoch wissen, dass dieses Property nicht mehr `null` sein kann, nachdem es ordnungsgemäß initialisiert wurde, können wir in diesem Beispiel _late initialization_ verwenden:
 

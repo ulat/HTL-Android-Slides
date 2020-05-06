@@ -9,7 +9,7 @@ operator fun Point.plus(other: Point): Point {
 }
 ```
 
-Nun können wir `+` Operator ganz einfach für Objekte vom Typ `Point` verwenden: `Point(1, 2) + Point(2, 3)`.
+Nun können wir den `+` Operator ganz einfach für Objekte vom Typ `Point` verwenden: `Point(1, 2) + Point(2, 3)`.
 
 Folgende arithmetische Operatoren können wir in Kotlin mittels Schlüsselwort überladen. Zusätzlich können wir noch mittels `Xassign` einen direkten Zuweisungsoperator überschreiben.
 
@@ -64,7 +64,7 @@ val newList = list + 2
 ```
 
 Bie `mutable`-Listen gilt folgende Konvention:
-> Wir können mittels `+=` die ursprüngliche Liste um den neuen Wert ergänzen. Im Hintergrund wir die entsprechende Funktion `plusAssign` aufgerufen.
+> Wir können mittels `+=` die ursprüngliche Liste um den neuen Wert ergänzen. Im Hintergrund wird die entsprechende Funktion `plusAssign` aufgerufen.
 
 ```kotlin
 val mutableList = mutableListOf(1, 2, 3)
@@ -86,8 +86,9 @@ Was wird von diesem Code ausgegeben?
 > [1, 2, 3]
 > [1, 2, 3. 4]
 
-_Die Variable `list1` ist eine `not-mutable`-Liste. Daher verändert der `+=`-Operator NICHT die ursprüngliche List, sondern liefert eine neue Liste zurück.  
-Die Variable `list2` ist eine Referenz auf `list1` - allerdings als `mutable` deklariert. Aus diesem Grund wird durch den `+=`-Operator im Hintergrund die Funktion `plusAssign` aufgerufen und die Liste verändert._
+_Die Variable `list1` ist eine `not-mutable`-Liste. Daher verändert der `+=`-Operator NICHT die ursprüngliche List, sondern liefert eine neue Liste zurück._
+
+_Die Variable `list2` ist eine Referenz auf `list1` - allerdings als `mutable` deklariert. Aus diesem Grund wird durch den `+=`-Operator im Hintergrund die Funktion `plusAssign` aufgerufen und die Liste verändert._
 
 In diesem Fall wäre es besser (und eher im Sinn von Kotlin), `listOf` durch `mutableListOf` und `var` durch `val` zu ersetzen:
 
@@ -105,7 +106,7 @@ println(list2)
 Nun wird auch die Variable `list1` verändert und wir erhalten den (wahrscheinlich) erwarteten Ouptut.
 
 ## Vergleichsoperatoren
-In Kotlin können wir verschiedene Vergleichsoperatoren zwischen Variablen verwenden. Im Hintergrund werden auch diese Operatoren durch entsprechende Operatoren-Methoden implmentiert und können daher auf die gleiche Weise überladen werden, wie arithmetische oder unäre Operatoren.
+In Kotlin können wir verschiedene Vergleichsoperatoren zwischen Variablen verwenden. Im Hintergrund werden auch diese Operatoren durch entsprechende Operator-Methoden implmentiert und können daher auf die gleiche Weise überladen werden, wie arithmetische oder unäre Operatoren.
 
 **Liste der Vergleichsoperatoren:**
 
@@ -122,19 +123,23 @@ Sämtliche Vergleichsoperatoren verwenden intern also die Methode `.compareTo()`
 Der Vergleich mittels `==` ist ebenfalls intern mittels Methode implementiert. In diesem Fall die Methode `equals()`: Der Ausdruck `a == b` entspricht intern dem entsprechenden Methodenaufruf: `a.equals(b)`.
 
 In Kotlin kann der Vergleichsoperator auch korrekt mit `null`-Werten umgehen:
+
 ```kotlin
 a == b              // a.equals(b)
 null == "abc"       // false
 null == null        // true
 ```
+
 _Somit entfällt die erforderliche Prüfung auf `null` bevor wir Variablen mit dem Vergleichsoperator vergleichen können._
 
 ## Indexbasierter Zugriff auf Elemente von Collections
 Auf Collection Datentypen (z.B. Listen) können wir mittels Index direkt auf einzelne Elemente zugreifen.
+
 ```kotlin
 map[key]
 mutableMap[key] = newValue
 ```
+
 Diese Funktion ist intern mittels der Methoden `get` und `set` implementiert.
 
 Indexbasiert | Funktionsbasiert
@@ -153,6 +158,7 @@ operator fun Board.set(x: Int, y: Int, value: Char) { ... }
 board[1, 2] = 'x'
 board[1, 2]         // 'x'
 ```
+
 ## Der `in`-Operator
 Immer wenn wir den `in`-Operator in Kotlin verwenden, wird im Hintergrund die Funktion `.contains` ausgeführt.
 
@@ -161,7 +167,7 @@ in-Operator | Funktion
 `a in c` | `c.contains(a)`
 
 ## Der `iterator`-Operator
-In Kotlin können wir direkt durch Collection-Datentypen oder String interieren. Diese Funktionalität wird durch Implementierung des `iterator`-Operators erreicht.
+In Kotlin können wir direkt über Collection-Datentypen oder Strings iterieren. Diese Funktionalität wird durch Implementierung des `iterator`-Operators erreicht.
 
 ```kotlin
 operator fun CharSequence.iterator(): CharIterator

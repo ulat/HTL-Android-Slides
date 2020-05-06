@@ -11,10 +11,13 @@ Die Annotation `@JvmField` annotiert ein Kotlin Property als Java Feld und macht
 @JvmField
 val prop = MyClass()
 ```
+
 ... ergibt den gleichen Code wie (Java):
+
 ```Java
 public static final MyClass prop = new MyClass();
 ```
+
 Dieses Feld kann dann von Java aus verwendet werden, was für einige Frameworks erforderlich ist.
 
 _Durch die Annotation `@JvmField` werden keine getter (bzw. setter bei mutable properties) Methoden generiert._
@@ -50,6 +53,6 @@ _In diesem Setting wissen wir jedoch nicht, ob `T` nullable ist oder nicht. Wir 
 # OOP - Design Entscheidungen
 Warum wurde für Kotlin der Standard `final` und `public` gewählt? Das sieht auf den ersten Blick widersprüchlich aus, da `public` ein Maximum an Sichtbarkeit gewährleistet, während `final` ein Minimum an Veränderbarkeit darstellt.
 
-Mit diesem Schritt soll sowohl Applikationsentwicklern, wie auch Entwicklern von Bibliotheken entgegen gekommen werden. Der Entwickler einer Bibliothek möchte die Sichtbarkeit so gut wie möglich einschränken. Änderungen an Bibliotheken können schwer rückgängig gemacht werden, da andere Systeme davon abhängen. Wurde also in einer Bibliothek ein Teil unbeabsichtigt veröffentlicht, ist es schwierig dies wieder rückgängig zu machen.
+Mit diesem Schritt soll sowohl Applikationsentwicklern, wie auch Entwicklern von Bibliotheken entgegen gekommen werden. Der Entwickler einer Bibliothek möchte die Sichtbarkeit so gut wie möglich einschränken können. Änderungen an Bibliotheken können schwer rückgängig gemacht werden, da andere Systeme davon abhängen. Wurde also in einer Bibliothek ein Teil unbeabsichtigt veröffentlicht, ist es schwierig dies wieder rückgängig zu machen.
 
-Mithilfe des Standards `final` wird das smart-casting erleichtert.
+Mithilfe des Standards `final` wird nebenbei auch das smart-casting erleichtert.

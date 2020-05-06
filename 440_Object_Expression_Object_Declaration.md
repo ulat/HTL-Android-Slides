@@ -10,7 +10,7 @@ In Kotlin wird genau dieser Code generiert, um das Singleton-Pattern zu realisie
 ![](assets/440_Object_Expression_Object_Declaration-81a601d5.png)
 
 ## Object Expression
-Object Expressions ersetzen die Annonymen Klassen in Java.
+Object Expressions ersetzen die annonymen Klassen in Java.
 
 ```kotlin
 window.addMouseListener(
@@ -24,10 +24,12 @@ window.addMouseListener(
         }
     })
 ```
-Wannimmer das Interface, das wir benötigen nur eine Methode aufweist, können wir anstatt der Object Expressions auch einfach Lambda-Ausdrücke verwenden.
+
+Wann immer das Interface, das wir benötigen nur eine Methode aufweist, können wir anstatt der Object Expressions auch einfach Lambda-Ausdrücke verwenden.
 
 ## Companion Objects
 In Kotlin können wir Objekte innerhalb von Objekten deklarieren. Dies wird als `companion object` bezeichnet:
+
 ```kotlin
 class A {
     companion object {
@@ -39,6 +41,7 @@ fun main(args: Array<String>) {
     A.foo()
 }
 ```
+
 Die Methoden des inneren  Objekts können dann über den Klassennamen aufgerufen werden. Da es in Kotlin keine statischen Methoden wie in Java gibt, können wir ähnliches Verhalten durch `companion` Objects realisieren.
 
 Die `companion` Objects in Kotlin können Interfaces implementieren, was statische Klassen in Java nicht können.

@@ -9,7 +9,7 @@ In Kotlin ist jede Deklaration `public` und `final` als Standard.
 * `open`: Wir definieren die Klasse als veränderbar
 * `internal`: Da es in Kotlin die von Java gewohnte Sichtbarkeit `package private` nicht gibt. Diese Deklarationen sind dann innerhalb des gleichen Moduls sichtbar.
 
-Ein **Modul** in Kotlin ist eine Set aus verschiedenen Kotlin-Dateien, die gemeinsam kompiliert werden:
+Ein **Modul** in Kotlin ist ein Set aus verschiedenen Kotlin-Dateien, die gemeinsam kompiliert werden:
 * ein IntelliJ IDEA Modul
 * ein Maven Projekt
 * ein Gradle Projekt
@@ -55,7 +55,7 @@ public final class MyClass {
 ```
 
 ## Package-Struktur
-In Java besteht die Empfehlung, jede Klasse in eine eigene Datei zu packen. Dies ist in Kotlin nicht erforderlich. Insbesondere bei reinen Datenklassen ist es komfortable, diese in einer gemeinsamen Datei zusammenzufassen.
+In Java besteht die Empfehlung, jede Klasse in eine eigene Datei zu packen. Dies ist in Kotlin nicht erforderlich. Insbesondere bei reinen Datenklassen ist es komfortabel, diese in einer gemeinsamen Datei zusammenzufassen.
 
 ![](assets/430_Objektorientierung_in_Kotlin-a30e3eb6.png)
 
@@ -69,7 +69,7 @@ class A
 val a = A()
 ```
 
-In Kotlin verwenden wir im Gegensatz zu Java kein Schlüsselwort `new`. Der Konstruktor wird in Kotlin wie einge gewöhnliche Funktion aufgerufen.
+In Kotlin verwenden wir im Gegensatz zu Java kein Schlüsselwort `new`. Der Konstruktor wird in Kotlin wie eine gewöhnliche Funktion aufgerufen.
 
 Auch wenn wir keinen Konstruktor innerhalb der Klasse definieren, können wir Objekte erzeugen, da automatisch - wie in Java - ein parameterloser Konstruktor generiert wird.
 
@@ -142,11 +142,13 @@ fun getDescription(color: Color) =
     }
 ```
 
-Auf enums kann über den vollständigen Namen zugegriffen werden. Möchte ich die Aufzählung ohne den gesamten Bezeichner verwenden, so muss das enum importiert werden:
+Auf enums kann über den vollständigen Namen zugegriffen werden. Möchten wir die Aufzählung ohne den gesamten Bezeichner verwenden, so muss das enum importiert werden:
+
 ```kotlin
 import packageName.Color.*
 ```
-Da ein enum eine gewöhnliche Klasse ist, können wir in Kotlin in Enums auf Member-Funktionen und Properties definieren.
+
+Da ein enum eine gewöhnliche Klasse ist, können wir in Kotlin in Enums auch Member-Funktionen und Properties definieren.
 
 ```kotlin
 enum class Color(
@@ -157,6 +159,7 @@ enum class Color(
     fun rgb() = (r * 256 + g) * 256 + b
 }
 ```
+
 _In diesem Fall benötigen wir in Kotlin ein Semikolon `;`, um die Liste der Enum-Konstanten von den Klassenmembern zu trennen!_
 
 Nachdem wir die Properties in einer enum Klasse definiert haben, können wir direkt auf diese zugreifen:
@@ -182,7 +185,7 @@ Beim Objektvergleich zwischen Instanzen von Datenklassen unterscheiden wir in Ko
 ![](assets/430_Objektorientierung_in_Kotlin-0929b325.png)
 
 ### Klassen als `sealed` deklarieren
-In Kotlin können wir Klassen mittel des Schlüsselworts `sealed` deklarieren. Betrachten wir folgendes Beispiel. Wir haben ein Interface `Expr`, das einen Ausdruck darstellt. Davon leitet wir die Klassen `Num` und `Sum` ab. Mit der Funktion `eval` validieren wir die Ausdrücke.
+In Kotlin können wir Klassen mittels des Schlüsselworts `sealed` deklarieren. Betrachten wir folgendes Beispiel. Wir haben ein Interface `Expr`, das einen Ausdruck darstellt. Davon leiten wir die Klassen `Num` und `Sum` ab. Mit der Funktion `eval` validieren wir die Ausdrücke.
 
 ```kotlin
 interface Expr
@@ -217,13 +220,14 @@ fun eval(e: Expr): Int = when (e) {
 }
 ```
 
-Als Alternative können auch die Klasse `Expr` mit dem `sealed`-Modifzierer versehen und so ausschließen, dass weitere Klasse davon abgeleitet werden.
+Als Alternative können wir auch die Klasse `Expr` mit dem `sealed`-Modifzierer versehen und so ausschließen, dass weitere Klassen davon abgeleitet werden.
 
 ```kotlin
 sealed class Expr
 class Nm(val value: Int) : Expr()
 class Sum(val left: Expr, val right: Expr) : Expr()
 ```
+
 _Wir müssen nun jedoch sicherstellen, dass alle Kind-Klassen in der gleichen Datei wie die Elternklasse liegen._
 
 _Beachte: In diesem Fall haben wir `Expr` als Klasse und nicht als Interface implementiert, was mit der zugrunde liegenden Implementierung zusammenhängt._

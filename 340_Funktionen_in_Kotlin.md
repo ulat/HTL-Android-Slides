@@ -11,10 +11,13 @@ fun max(a: Int, b: Int): Int {
 Die Typen der Aufrufparemter werden (im Unterschied zu Java) hinter die Bezeichnung gestellt.
 
 Besteht eine Funktion nur aus einem Rückgabewert, so kann diese auch einfacher direkt in einer einzigen Zeile geschrieben werden:
+
 ```kotlin
 fun max(a: Int, b: Int): Int = if (a > b) a else b
 ```
+
 Sollen keine Werte beim Aufruf zurückgeliefert werden, so kann der Typ ```:Unit``` verwendet werden oder alternativ kein Rückgabetyp verwendet werden.
+
 ```kotlin
 fun display(a: Int, b: Int): Unit {
     println(max(a, b))
@@ -24,11 +27,12 @@ fun display(a: Int, b: Int): Unit {
 ## Wo können Funktionen deklariert werden?
 In Kotlin können Funktionen an verschiedenen Stellen definiert werden.
 
-- Top-Level Funktion (ohne zugehörige Klasse)
-- Member-Function in einer Klasse
-- Lokale Funktion
+- Top-Level Funktionen (ohne zugehörige Klasse)
+- Member-Funktionen in einer eigenen Klasse
+- Lokale Funktionen
 
-Beispiele:
+**Beispiele:**
+
 ```kotlin
 // Top Level
 fun topLevel() = 1
@@ -41,7 +45,8 @@ fun other() {
     fun local() = 3
 }
 ```
-_Auf diese Weise können auch Funktion innerhalb von anderen Funktionen definiert werden._
+
+_Auf diese Weise können auch Funktionen innerhalb von anderen Funktionen definiert werden._
 
 __Kann eine Top-Level Kotlin Funktion aus Java Code heraus aufgerufen werden?__
 
@@ -58,25 +63,29 @@ So kann eine beliebige Bezeichnung für die Klasse der Kotlin-Datei gewählt wer
 ## Default Werte für Funktionsparameter
 
 Was gibt folgender Quellcode aus?
+
 ```kotlin
 println(listOf('a', 'b', 'c').joinToString(
     separator = "", prefix = "(", postfix = ")"))
 ```
-Ausgabe: ```(abc)```
+Ausgabe:
+>(abc)
 
 Die Funktion ```joinToString``` fügt die Elemente einer Liste zu einem einzigen String zusammen. Wobei die Elemente durch den für ```spearator``` angegebenen Wert getrennt werden. Die beiden Werte von ```prefix``` bzw. ```postfix``` werden am Anfang respektive am Ende des Strings hinzugefügt.
 
-Werte für Funktionsparameter können mit oder auch ohne der Bezeichnung des Parameters übergeben werden.
+Werte für Funktionsparameter können wir mit oder auch ohne der Bezeichnung des Parameters übergeben.
 
 ```kotlin
 println(listOf('a', 'b', 'c').joinToString(postfix = "."))
 ```
-Ausgabe: ```a, b, c.```
+Ausgabe:
+>a, b, c.
 
 Der Default Wert für ```separator``` ist also das Komma.
 
 ### Default Werte für die Parameter eigener Funktionen deklarieren
-Natürlich können auch bei eigenen Funktionen Default-Werte für die Parameter angegeben werden.
+Natürlich können wir auch bei eigenen Funktionen Default-Werte für die Parameter angeben.
+
 ```kotlin
 fun displaySeparator(character: Char = '*', size: Int = 10) {
     repeat(size) {
@@ -84,12 +93,15 @@ fun displaySeparator(character: Char = '*', size: Int = 10) {
     }
 }
 ```
+
 Beispiele für Aufrufe dieser Funtktion:
+
 ![](assets/340_Funktionen_in_Kotlin-02529172.png){:width="300"}
 
-An diesem Aufruf ```displaySeparator(size=5) //***** ``` sieht man, dass die Parameter inklusive Bezeichnung aufgerufen werden müssen, sofern wir sie nicht in der definierten Reihenfolge angeben bzw. - wie in diesem Fall - nur den zweiten Funktionsparameter verwenden wollen.
+An diesem Aufruf ```displaySeparator(size=5) //***** ``` sehen wir, dass die Parameter inklusive Bezeichnung aufgerufen werden müssen, sofern wir sie nicht in der definierten Reihenfolge angeben bzw. - wie in diesem Fall - nur den zweiten Funktionsparameter verwenden wollen.
 
 Doch was gibt folgender Aufruf aus?
+
 ```Kotlin
 displaySeparator(3, '5')
 ```
@@ -101,10 +113,10 @@ Allerdings würde der Aufruf funktionieren, wenn wir die Parameter direkt bezeic
 ```Kotlin
 displaySeparator(size=3, character='5')
 ```
-Ausgabe: ```555```
+Ausgabe:
+>555
 
-
-## Überladungen von Funktionen
+## Überladen von Funktionen
 Aus Java ist der Entwickler gewöhnt, Funktionen mit verschiedenen Parameter-Variationen zu überladen. Beispielsweise für die Funktion ```displaySeparator``` könnten die überladenen Varianten so aussehen:
 
 ```java
@@ -118,15 +130,16 @@ public void displaySeparator() {
     displaySeparator('*');
 }
 ```
-Für diese Anwendung können in Kotlin die Default-Werte für Parameter verwendet werden.
+
+Für diese Anwendung können wir in Kotlin die Default-Werte für Parameter verwenden.
 
 _Doch wie kann eine Kotlin-Funktion mit Default-Parameterwerten aus Java Code heraus aufgerufen werden?_
 
 ```fun sum(a: Int = 0, b: Int = 0, c: Int = 0)```
 
-Für einen Aufruf aus Java, muss die Funktion mit Angabe von Werten für alle Parameter aufgerufen werden.
+Für einen Aufruf aus Java, müssen wir die Funktion mit Angabe von Werten für alle Parameter aufrufen.
 
-Um die Funktion mit Default-Werten auch von Java aus nutzen zu können. Muss diese mit der Annotation ```@JvmOverloads``` ausgezeichnet werden.
+Um die Funktion mit Default-Werten auch von Java aus nutzen zu können. Müssen wir diese mit der Annotation ```@JvmOverloads``` ausgezeichnen.
 
 Default-Werte in Kotlin sparen im Vergleich zu Java eine Menge an Codezeilen hinsichtlich der Überladungen von Funktionen ein.
 
