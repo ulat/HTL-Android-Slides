@@ -231,7 +231,7 @@ jsonObj.put("car", JSONObject.NULL);
 jsonObj.put("favorite_foods", new String[] { "cookie",
 "fish", "chips" });
 ```
-__Man kann naturlich auch ein ¨ JSONOBject in ein JSONObject verpacken.__
+__Man kann naturlich auch ein ¨ JSONObject in ein JSONObject verpacken.__
 ```java
 // {"id": 100001, "nationality", "American"}
 JSONObject passportJsonObj = new JSONObject();
