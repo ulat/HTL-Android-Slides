@@ -1,11 +1,11 @@
 # Intents
-Die Idee hinter mobilen UIs liegt in einem logischen Interaktionsablauf. In Android bedeutet dies, dass eine Funktionalität für den User in einer Activity gekapselt sien soll - eine Activity hat also genau eine Funktion für den User.
+Die Idee hinter mobilen UIs liegt in einem logischen Interaktionsablauf. In Android bedeutet dies, dass eine Funktionalität für den User in einer Activity gekapselt sein soll - eine Activity hat also genau eine Funktion für den User.
 
 _Dieses Konzept kann mit der Programmierung verglichen werden, wo eine Funktion genau eine Anforderung erledigebn soll._
 
 __Intents__ stellen in Android das Konzept dar, mit dem neue Activities gestartet werden können bzw. zwischen Activities gewechselt werden kann.
 
-Auf diesem Weg kann auch eine neue App gestartet werden. Diesbzeüglich werden zwei Kategorien von Intents unterschieden:
+Auf diesem Weg kann auch eine neue App gestartet werden. Diesbezüglich werden zwei Kategorien von Intents unterschieden:
 
  - __explizite Intents:__ die Activity, die gestartet werden soll, wird eindeutig angegeben.
  - __implizite Intents:__ wir definieren nur die Aufgabe und lassen dem Android Betriebssystem die Wahl der App über.
@@ -164,7 +164,8 @@ Während wir beim Starten eines expliziten Intents genau die Activity-Klasse fes
 
 Für einen Impliziten Intent braucht man zwei Parameter:
 1.	__Aktion des Intent__ – was soll die Zielkomponente machen
-2.	URI – zusätzliche Daten für die Zielkomponente
+2.	__URI__ – zusätzliche Daten für die Zielkomponente
+3.	
 Man kann eventuell noch über Permissions den Zugriff einschränken
 Der Aufruf selbst erfolgt wieder mit `startActivity`.
 
@@ -271,7 +272,7 @@ Um unserer App das Empfangen von impliziten Intents zu erlauben, muss im Manifes
 
 | Bezeichnung | Beschreibung |
 | --- | ---- |
-| `<action android:name="xxx">`` |	Aktion, auf die die Activity reagieren soll. Der Name muss eindeutig sein. Für eigene Filter sollte man folgende Namensgebung wählen: Paketname.intent.action.Actionname |
+| `<action android:name="xxx">` |	Aktion, auf die die Activity reagieren soll. Der Name muss eindeutig sein. Für eigene Filter sollte man folgende Namensgebung wählen: Paketname.intent.action.Actionname |
 | `<category android:name="xxx">` |	Legt fest, wie die Activity aufgerufen werden soll.  Übliche Werte: android.intent.category.DEFAULT: normal starten android.intent.category.LAUNCHER: die Activity ist die Startseite |
 | `<data android:scheme="xxx">` |	Damit kann man dem Intent-Filter eine URI angeben um zu erzwingen, dass die Daten (zweiter Parameter des Intent beim Aufruf) ein bestimmtes Format haben. Dies ist etwa beim Dialer der Fall, wo die Daten das Format „tel: 1234567“ haben müssen. |
 
