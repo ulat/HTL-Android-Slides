@@ -228,9 +228,9 @@ notificationManager.notify(NOTIFICATION_ID, mBuilder.build());
 ```
 
 ### MyBroadcastReceiver
-Die Klasse `MyBroadcastReceiver` ist für die Verarbeitung der Texteingaben in Bezug auf die Notification im Hintergrund zuständig. BroadcastReceiver werden im weiteren noch gesondert besprochen. In diesem Zusammenhang soll nur die Klasse `MyBroadcastReceiver` besprochen werden.
+Die Klasse `MyBroadcastReceiver` ist für die Verarbeitung der Texteingaben in Bezug auf die Notification im Hintergrund zuständig. BroadcastReceiver werden im Weiteren noch gesondert besprochen. In diesem Zusammenhang soll nur die Klasse `MyBroadcastReceiver` besprochen werden.
 
-Zuerst muss die Klasse von `BroadcastReceiver` abgeleitet werden und muss damit die Methode `onReiceive` überschreiben. Diese wird aufgerufen, wernn der Broadcast-Receiver Daten empfängt. In unserem Fall wird die Texteingabe des Benutzers verarbeitet.
+Zuerst muss die Klasse von `BroadcastReceiver` abgeleitet werden und muss damit die Methode `onReceive` überschreiben. Diese wird aufgerufen, wenn der Broadcast-Receiver Daten empfängt. In unserem Fall wird die Texteingabe des Benutzers verarbeitet.
 
 ```java
 public void onReceive(Context context, Intent intent) {
