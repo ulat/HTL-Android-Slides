@@ -92,7 +92,7 @@ public int onStartCommand(Intent intent, int flags, int startId) {
 
 ## Service stoppen
 
-Das Service kann von jeder Activity aus genauso gestoppt werden, wie es gestartet wurde. Der einzige Unterschied liegt an der verwendeten Methode. Zum Stoppen verwendet man die Methode `stopService()`.
+Das Service kann von jeder Activity aus genauso gestoppt werden, so wie es gestartet wurde. Der einzige Unterschied liegt an der verwendeten Methode. Zum Stoppen verwendet man die Methode `stopService()`.
 
 ```java
 public void stopService(View view) {
@@ -189,7 +189,7 @@ public void onDestroy() {
 ```
 
 ## Intent-Service
-Möchte man das Service hauptsächlich für Hintergrundtätigkeiten nutzen, so bietet sich ein Intent-Service an. Leitet man die Implementierung der Service-Klasse von der Klasse `IntentService` ab, so braucht man sich nicht extra um das Thread-Thema kümmern. Es is nur erforderlich, die Methode `onHandleIntent` zu implementieren. Wird die Methode verlassen, so wird auch automatisch `onDestroy` aufgreufen.
+Möchte man das Service hauptsächlich für Hintergrundtätigkeiten nutzen, so bietet sich ein Intent-Service an. Leitet man die Implementierung der Service-Klasse von der Klasse `IntentService` ab, so braucht man sich nicht extra um das Thread-Thema kümmern. Es is nur erforderlich, die Methode `onHandleIntent` zu implementieren. Wird die Methode verlassen, so wird auch automatisch `onDestroy` aufgerufen.
 
 Dem Konstruktor wird der Name des zu erstellenden Worker-Threads übergeben.
 
