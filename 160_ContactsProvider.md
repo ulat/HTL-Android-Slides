@@ -384,7 +384,7 @@ Der Contacts Provider erstellt drei _Raw Contacts_ aus diesen Interaktionen:
 1. Ein dritter _Raw Contact_ wird für `Susi Müller` angelegt. Diesmal erfolgt die Verknüpfung mit _max2000_. Der User Account Type ist `Twitter`.
 
 ### Daten
-Die Daten zu jedem _Raw Contact_ werden in der Tabelle `ContractsContract.Data` gespeichert. Die verknüpfte `_ID` ermöglicht, dass ein einzelner Kontakt mit mehreren Instanzen vom gleichen Datentyp (zB gmail Konto) verknüoft ist.
+Die Daten zu jedem _Raw Contact_ werden in der Tabelle `ContractsContract.Data` gespeichert. Die verknüpfte `_ID` ermöglicht, dass ein einzelner Kontakt mit mehreren Instanzen vom gleichen Datentyp (zB gmail Konto) verknüpft ist.
 
 Über Unterklassen von `ContactsContract.CommonDataKinds` kann auf vereinfachte Weise auf die Daten aus dem Provider zugegriffen werden.
 
@@ -412,4 +412,4 @@ Um auf die Kontakte am System zugegreifen zu können, sind natürlich auch Berec
 Beide Permissions müssen im Manifest eingetragen werden.
 
 ## Contacts Provider abfragen
-Da der Contacts Provider hierarchisch aufgebaut ist, ist oftmals hilfreich, einen Eintrag abzufragen und anschließend alls Kind-Elemente abzufragen, die mit dem Einetrag verknüpft sind. Um derartige Abfragen zu vereinfachen, stellt der Contacts Provider `entity constructs` zur Verfügung, die ähnlich wie joins auf Datenbank Tabellen agieren.
+Da der Contacts Provider hierarchisch aufgebaut ist, ist es oftmals hilfreich, einen Eintrag abzufragen und anschließend alle Kind-Elemente abzufragen, die mit dem Eintrag verknüpft sind. Um derartige Abfragen zu vereinfachen, stellt der Contacts Provider `entity constructs` zur Verfügung, die ähnlich wie `JOINS` auf Datenbank Tabellen agieren.
