@@ -78,7 +78,7 @@ Layouts der beiden Fragments:
 ### Code der Fragment-Klassen
 Erzeugt man in Android Studio ein Fragment über das Menü, so wird sehr viel Code automatisch generiert, der nicht unmittelbar benötigt wird und den Zusammenhang für den Anfänger etwas erschwert. Aus diesem Grund wurde der Code entfernt und wird nach und nach manuell eingefügt.
 
-**LeftFragment,java:**
+**LeftFragment.java:**
 ```java
 public class LeftFragment extends Fragment {
     private static final String TAG = LeftFragment.class.getSimpleName();
