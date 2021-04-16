@@ -106,7 +106,7 @@ Tutorial zu lifecycle-aware components: https://developer.android.com/topic/libr
 ## onPause()
 
 Diese Methode wird aufgerufen, wenn die Activity nicht mehr im Vordergrund ist. Folgende Gründe können dafür ausschlaggebend sein, dass die Activity den Fokus verliert:
- - Ereignisse (wie in _onResume()_ beschrieben) unterbrechen die Ausfürhung der Activity
+ - Ereignisse (wie in _onResume()_ beschrieben) unterbrechen die Ausführung der Activity
  - Ab Android 7.0 (API Level 24) oder höher, können Apps im Multi-Window-Mode laufen. Da nur eine der apps zu einem Zeitpunkt den Fokus besitzen kann, laufen die anderen im Hintergrund
  - Eine neue (teil-)transparente Activity wie etwa ein Dialogfenster wird geöffnet.
 In der ```onPause()``` Methode sollten alle gebundenen Ressource wieder freigegeben werden, um Energie zu sparen (zB GPS Sensor).
