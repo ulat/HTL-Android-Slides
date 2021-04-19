@@ -93,7 +93,7 @@ Die SeekBar ermöglicht einen Fortschritt anzuzeigen und zu verändern. Anwendun
 Eigenschaften und Events:
 
  - **max**: maximaler Wert
- - **progress**: aktueller Werte
+ - **progress**: aktueller Wert
  - **Event OnSeekBarChange**: wird bei Änderung des Wertes aufgerufen.
 
 ## DatePicker
