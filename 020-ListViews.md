@@ -91,7 +91,7 @@ Innerhalb dieser Ressourcedatei definiert man ein string-array:
     </string-array>
 </resources>
 ```
-Danach muss man wie gewohnt den ArayAdapter initialisieren. Dieses Mal muss jedoch eine Referenz auf die XML-Ressource anstatt der Array-List übergeben werden:
+Danach muss man wie gewohnt den ArrayAdapter initialisieren. Dieses Mal muss jedoch eine Referenz auf die XML-Ressource anstatt der Array-List übergeben werden:
 ```java
 mAdapter = ArrayAdapter.createFromResource(this, R.array.items, android.R.layout.simple_list_item_1);
 ```
