@@ -191,7 +191,7 @@ __Das Layout für den Dialog erzeugt man in Form einer XML-Datei, wie jedes ande
 Bei lang laufenden Aktionen, z.B. Lesen von vielen Daten aus der DB, importieren von einer CSV-Datei, Synchronisierung über eine Socket-Verbindung,… sollte man dem Benutzer anzeigen, dass das System nicht hängt, sondern eben beschäftigt ist. Dazu bietet sich der ```ProgressDialog``` an, der eine passende Meldung in einem Dialogfenster anzeigt und die App bis zum Ende der Aktion blockiert.
 
 ### Variante "Endlosschleife"
-Der PrograssDialog kann einfach das drehende Rad (bzw. Kreis) anzeigen, bis er wieder ausgeblendet wird. Diese Variante ist einfach zu realisieren. Gibt dem Nutzer aber keine weitere Information, wie lange die Operation noch dauern wird.
+Der ProgressDialog kann einfach das drehende Rad (bzw. Kreis) anzeigen, bis er wieder ausgeblendet wird. Diese Variante ist einfach zu realisieren. Gibt dem Nutzer aber keine weitere Information, wie lange die Operation noch dauern wird.
 
 ```java
 final ProgressDialog dialog =
@@ -212,16 +212,16 @@ new Thread()() -> {
 
 Statt des drehenden Kreises wird ein horizontaler Fortschrittsbalken angezeigt, der angibt wieviel Prozent der Operation bereits abgeschlossen sind.
 
-Dafür muss der ProgressDialog entsprechend mittels ```ProressDialog.STYLE_HORIZONTAL``` konfiguriert werden:
+Dafür muss der ProgressDialog entsprechend mittels ```ProgressDialog.STYLE_HORIZONTAL``` konfiguriert werden:
 
 ```java
 private ProgressDialog dialog;
 public void btnProgressDialogAnimatedClicked(View view) {
-    dialog = new PrograssDialog(this);
+    dialog = new ProgressDialog(this);
     dialog.setMessage("Message....");
     dialog.setTitle("Titel vom Dialog...");
     dialog.setCancelable(false);
-    dialog.setProgressStyle(PrograssDialog.STYLE_HORIZONTAL);
+    dialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
     dialog.show();
     new Thread( () -> {
         loadData();
@@ -235,7 +235,7 @@ public void btnProgressDialogAnimatedClicked(View view) {
 #### Aktualisieren der Fortschrittsanzeige
 
 In jenem Codeblock, der die länger andauernden Aktionen ausführt, kann der Fortschritt auf zwei verschiedene Arten gesetzt werden:
-- ```incrementProgressBy(intValue)```: so kann der relativeWert angegeben werden, um den der Wert im ProgressBar erhöht wird.
+- ```incrementProgressBy(intValue)```: so kann der relative Wert angegeben werden, um den der Wert im ProgressBar erhöht wird.
 - ```setProgress(intValue)```: so kann der absolute, angezeigte Wert gesetzt werden.
 
 _Beide Werte müssen zwischen 0 und 100 (Prozente) sein!_
