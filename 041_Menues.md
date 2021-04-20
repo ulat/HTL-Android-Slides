@@ -211,7 +211,7 @@ public boolean onContextItemSelected(MenuItem item) {
 }
 ```
 ### ContextMenu für Elemente einer Listview
-Möchte man ein Contextmenu den Elementen einer ListView zuordnen, ergibt sich folgendes Problem: Die einzige vorhandene ID ist jene von der ListView selbst. Für das Kontextmen braucht man aber die ID vom ausgewählten Listeneintrag.
+Möchte man ein Contextmenu den Elementen einer ListView zuordnen, ergibt sich folgendes Problem: Die einzige vorhandene ID ist jene von der ListView selbst. Für das Kontextmenü braucht man aber die ID vom ausgewählten Listeneintrag.
 ![](assets/041_Menues-0e821d27.png)
 Der  grundlegende Prozess läuft auch bei der ListView gleich ab.
 
